@@ -1,0 +1,110 @@
+{% extends "register/base.html" %}
+{% load static %}
+{% block content %}
+
+    <!--================Home Banner Area =================-->
+    <section class="home_banner_area">
+                <div class="container box_1620">
+                    <div class="banner_inner d-flex align-items-center">
+                        <div class="banner_content">
+                            <div class="media">
+                                <div class="d-flex">
+                                    <img src="{% static 'img/personal.jpg' %}" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <div class="personal_text">
+                                        <h3>{{ employee }}</h3>
+                                        <h4>{{ employee.rank | default:'N/A' }}</h4><ul class="list basic_info">
+                                            <li><a href="#"><i class="lnr lnr-calendar-full"></i>{{ employee.birth_date | default:'N/A'}}</a></li>
+                                            <li><a href="#"><i class="lnr lnr-phone-handset"></i>{{ employee.phone | default:'N/A' }}</a></li>
+                                            <li><a href="#"><i class="lnr lnr-envelope"></i> {{ employee.email | default:'N/A' }}</a></li>
+                                            <li><a href="#"><i class="lnr lnr-home"></i> {{ employee.address | default:'N/A' }}</a></li>
+                                        </ul>
+                                        <ul class="list personal_social">
+                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    <div class="container">
+        <!--================End Home Banner Area =================-->
+        <div class="section-top-border">
+            <h3 class="mb-30 title_color">{{ employee }} details</h3>
+                <div class="progress-table-wrap">
+                    <div class="progress-table">
+                        <div class="table-row">
+                            <div class="serial">First Name: </div>
+                            <div class="country">{{ employee.first_name | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="serial">Middle Name: </div>
+                            <div class="country">{{ employee.middle_name | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="serial">Last Name: </div>
+                            <div class="country">{{ employee.last_name | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="serial">Marital Status: </div>
+                            <div class="country">{{ employee.marital_status | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="serial">Gender: </div>
+                            <div class="country">{{ employee.gender | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="serial">Unit: </div>
+                            <div class="country">{{ employee.unit | default:'N/A' }}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="serial">Religion: </div>
+                            <div class="country">{{ employee.religion | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="serial">Blood Group: </div>
+                            <div class="country">{{ employee.blood_group | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="serial">Genotype: </div>
+                            <div class="country">{{ employee.genotype | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="serial">NIN: </div>
+                            <div class="country">{{ employee.national_id_number | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="serial">Passport Number: </div>
+                            <div class="country">{{ employee.passport_number | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="serial">State of Residence: </div>
+                            <div class="country">{{ employee.state_of_residence | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="serial">Country: </div>
+                            <div class="country">{{ employee.country | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="serial">State of Origin: </div>
+                            <div class="country">{{ employee.state_of_origin | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="serial">Local Government Area: </div>
+                            <div class="country">{{ employee.lga | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="serial">Last Pass: </div>
+                            <div class="country">{{ employee.last_pass | default:'N/A'}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

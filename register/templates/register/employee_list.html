@@ -1,0 +1,41 @@
+{% extends "register/base.html" %}
+{% load static %}
+{% block content %}
+    <!--================Home Banner Area =================-->
+        <section class="banner_area">
+            <div class="box_1620">
+				<div class="banner_inner d-flex align-items-center">
+					<div class="container">
+						<div class="banner_content text-center">
+							<h2>Employees</h2>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+    <div class="container">
+        <!--================End Home Banner Area =================-->
+        <div class="section-top-border">
+        <div class="progress-table-wrap">
+            <div class="progress-table">
+                {% if object_list %}
+                    <div class="table-head">
+                        <div class="serial">#</div>
+                        <div class="country">Employees List</div>
+                    </div>
+                {% for emp in object_list %}
+                    <div class="table-row">
+                        <div class="serial">{{ forloop.counter }}</div>
+                        <div class="country"><a href="{% url 'register:employee_detail' emp.pk %}">{{ emp }}</a></div>
+                    </div>
+                {% endfor %}
+                {% else %}
+                     <div class="table-row">
+                        <div class="ml-5">No Employee Record Available</div>
+                     </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

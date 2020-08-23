@@ -1,0 +1,1 @@
+web: gunicorn duty_register.wsgi —-log-file -
