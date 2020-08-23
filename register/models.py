@@ -141,7 +141,6 @@ class Employee(models.Model):
     genotype = models.CharField(max_length=2, choices=GENOTYPE_CHOICES, blank=True, null=True)
     national_id_number = models.CharField(verbose_name="National ID Number", max_length=50, blank=True, null=True)
     passport_number = models.CharField(max_length=20, blank=True, null=True)
-    permanent_address = models.TextField(blank=True, null=True)
     state_of_residence = models.ForeignKey(State, related_name='employees_residence', null=True, blank=False,
                                            on_delete=models.SET_NULL)
     country = models.ForeignKey(Country, related_name='country_of_residence', null=True, blank=True,

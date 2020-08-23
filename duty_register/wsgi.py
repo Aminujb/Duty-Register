@@ -14,3 +14,4 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'duty_register.settings.development')
 
 application = get_wsgi_application()
+application = DjangoWhiteNoise(application)
