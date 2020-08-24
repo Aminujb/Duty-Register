@@ -1000,7 +1000,7 @@ button:focus {
   position: relative; }
   .reservation_form_area .res_form_inner:before {
     content: "";
-    background: url(../img/contact-shap-1.png);
+    background: none;
     position: absolute;
     left: -125px;
     height: 421px;
@@ -1009,7 +1009,7 @@ button:focus {
     transform: translateY(-50%); }
   .reservation_form_area .res_form_inner:after {
     content: "";
-    background: url(../img/contact-shap-2.png);
+    background: none;
     position: absolute;
     right: -125px;
     height: 421px;
@@ -3002,4 +3002,5 @@ h6 {
 ============================================================================================ */
 /*---------------------------------------------------- */
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMapping
+=style.css.map */
