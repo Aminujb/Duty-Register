@@ -1,0 +1,41 @@
+{% extends "register/base.html" %}
+{% load static %}
+{% block content %}
+
+    <!--================Home Banner Area =================-->
+        <section class="banner_area">
+            <div class="box_1620">
+				<div class="banner_inner d-flex align-items-center">
+					<div class="container">
+						<div class="banner_content text-center">
+							<h2>Upload Records</h2>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+    <div class="container">
+        <!--================End Home Banner Area =================-->
+            <div class="section-top-border">
+                 <form method="post" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group mb-30 ml-5 align-content-center mr-5" style="margin-top: 100px">
+                        <a href="{% static 'download/employees.xlsx' %}" class="genric-btn success circle mb-20">Download Template</a>
+                        <br>
+                        <p class="sample-text mb-5">You Can Only Upload (.xlsx) Files. <br>
+                            <strong>Please download template excel file to prevent upload errors.</strong></p>
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                            <span class="input-group-addon fileupload btn btn-info btn-anim btn-file"><i class="fa fa-upload"></i> <span class="fileinput-new btn-text">Select file</span>
+                            <input type="file" name="employees_data" id="id_employees_data">
+                            </span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success">Upload</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

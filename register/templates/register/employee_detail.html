@@ -15,6 +15,7 @@
                                     <div class="personal_text">
                                         <h3>{{ employee }}</h3>
                                         <h4>{{ employee.rank | default:'N/A' }}</h4><ul class="list basic_info">
+                                            <li><a href="#"><i class="lnr lnr-user"></i>{{ employee.p_number | default:'N/A'}}</a></li>
                                             <li><a href="#"><i class="lnr lnr-calendar-full"></i>{{ employee.birth_date | default:'N/A'}}</a></li>
                                             <li><a href="#"><i class="lnr lnr-phone-handset"></i>{{ employee.phone | default:'N/A' }}</a></li>
                                             <li><a href="#"><i class="lnr lnr-envelope"></i> {{ employee.email | default:'N/A' }}</a></li>
@@ -39,68 +40,92 @@
                 <div class="progress-table-wrap">
                     <div class="progress-table">
                         <div class="table-row">
-                            <div class="serial">First Name: </div>
+                            <div class="country">First Name: </div>
                             <div class="country">{{ employee.first_name | default:'N/A'}}</div>
                         </div>
                         <div class="table-row">
-                            <div class="serial">Middle Name: </div>
+                            <div class="country">Middle Name: </div>
                             <div class="country">{{ employee.middle_name | default:'N/A'}}</div>
                         </div>
                         <div class="table-row">
-                            <div class="serial">Last Name: </div>
+                            <div class="country">Last Name: </div>
                             <div class="country">{{ employee.last_name | default:'N/A'}}</div>
                         </div>
                         <div class="table-row">
-                            <div class="serial">Marital Status: </div>
+                            <div class="country">P Number: </div>
+                            <div class="country">{{ employee.p_number | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="country">Speciality: </div>
+                            <div class="country">{{ employee.speciality | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="country">Date TOS: </div>
+                            <div class="country">{{ employee.date_tos | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="country">Seniority: </div>
+                            <div class="country">{{ employee.seniority | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="country">T Comm: </div>
+                            <div class="country">{{ employee.t_comm | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="country">Marital Status: </div>
                             <div class="country">{{ employee.marital_status | default:'N/A'}}</div>
                         </div>
                         <div class="table-row">
-                            <div class="serial">Gender: </div>
+                            <div class="country">Gender: </div>
                             <div class="country">{{ employee.gender | default:'N/A'}}</div>
                         </div>
                         <div class="table-row">
-                            <div class="serial">Unit: </div>
+                            <div class="country">Unit: </div>
                             <div class="country">{{ employee.unit | default:'N/A' }}</div>
                         </div>
                         <div class="table-row">
-                            <div class="serial">Religion: </div>
+                            <div class="country">Religion: </div>
                             <div class="country">{{ employee.religion | default:'N/A'}}</div>
                         </div>
                         <div class="table-row">
-                            <div class="serial">Blood Group: </div>
+                            <div class="country">Blood Group: </div>
                             <div class="country">{{ employee.blood_group | default:'N/A'}}</div>
                         </div>
                         <div class="table-row">
-                            <div class="serial">Genotype: </div>
+                            <div class="country">Genotype: </div>
                             <div class="country">{{ employee.genotype | default:'N/A'}}</div>
                         </div>
                         <div class="table-row">
-                            <div class="serial">NIN: </div>
+                            <div class="country">NIN: </div>
                             <div class="country">{{ employee.national_id_number | default:'N/A'}}</div>
                         </div>
                         <div class="table-row">
-                            <div class="serial">Passport Number: </div>
+                            <div class="country">Passport Number: </div>
                             <div class="country">{{ employee.passport_number | default:'N/A'}}</div>
                         </div>
                         <div class="table-row">
-                            <div class="serial">State of Residence: </div>
+                            <div class="country">State of Residence: </div>
                             <div class="country">{{ employee.state_of_residence | default:'N/A'}}</div>
                         </div>
                         <div class="table-row">
-                            <div class="serial">Country: </div>
+                            <div class="country">Country: </div>
                             <div class="country">{{ employee.country | default:'N/A'}}</div>
                         </div>
                         <div class="table-row">
-                            <div class="serial">State of Origin: </div>
+                            <div class="country">State of Origin: </div>
                             <div class="country">{{ employee.state_of_origin | default:'N/A'}}</div>
                         </div>
                         <div class="table-row">
-                            <div class="serial">Local Government Area: </div>
+                            <div class="country">Local Government Area: </div>
                             <div class="country">{{ employee.lga | default:'N/A'}}</div>
                         </div>
                         <div class="table-row">
-                            <div class="serial">Last Pass: </div>
+                            <div class="country">Last Pass: </div>
                             <div class="country">{{ employee.last_pass | default:'N/A'}}</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="country">Remarks: </div>
+                            <div class="country">{{ employee.remarks | default:'N/A'}}</div>
                         </div>
                     </div>
                 </div>
