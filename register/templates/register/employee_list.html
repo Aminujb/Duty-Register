@@ -14,6 +14,13 @@
             </div>
         </section>
     <div class="container">
+
+        <form action="{% url 'register:search_results' %}" method="get">
+            <input class="mt-2 mb-3" name="q" type="text" placeholder={% if search_word %}{{ search_word }}{% else %}"Search..."{% endif %}>
+            <div>
+                <button type="submit" class="btn btn-success">Search</button>
+            </div>
+        </form>
         <!--================End Home Banner Area =================-->
         <div class="section-top-border">
         <div class="progress-table-wrap">
@@ -23,6 +30,7 @@
                         <div class="serial">#</div>
                         <div class="country">Employees List</div>
                     </div>
+
                 {% for emp in object_list %}
                     <div class="table-row">
                         <div class="serial">{{ forloop.counter }}</div>
@@ -31,7 +39,7 @@
                 {% endfor %}
                 {% else %}
                      <div class="table-row">
-                        <div class="ml-5">No Employee Record Available</div>
+                        <div class="ml-5">{% if search_not_found %}{{ search_not_found }}{% else %}No Employee Record Available{% endif %}</div>
                      </div>
                 {% endif %}
             </div>
