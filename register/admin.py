@@ -1,8 +1,9 @@
 from django.contrib import admin
 
-from .models import Employee, Unit, UnitType, Country, State, Rank, Speciality, Tcomm
+from .models import Employee, Pass, Unit, UnitType, Country, State, Rank, Speciality, Tcomm
 
 admin.site.register(Employee)
+admin.site.register(Pass)
 admin.site.register(Unit)
 admin.site.register(UnitType)
 admin.site.register(Country)

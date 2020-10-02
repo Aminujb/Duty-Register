@@ -1,5 +1,6 @@
 {% extends "register/base.html" %}
 {% load static %}
+{% block title %} {{ employee }} Details {% endblock %}
 {% block content %}
 
     <!--================Home Banner Area =================-->
@@ -120,16 +121,39 @@
                             <div class="country">{{ employee.lga | default:'N/A'}}</div>
                         </div>
                         <div class="table-row">
-                            <div class="country">Last Pass: </div>
-                            <div class="country">{{ employee.last_pass | default:'N/A'}}</div>
-                        </div>
-                        <div class="table-row">
                             <div class="country">Remarks: </div>
                             <div class="country">{{ employee.remarks | default:'N/A'}}</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+        <section class="feature_area white_feature p_120">
+        	<div class="container">
+        		<div class="main_title">
+        			<h2>Pass History</h2>
+        		</div>
+                {% if pass_history %}
+                    <div class="feature_inner row">
+                {% for pass in pass_history %}
+        			<div class="col-lg-4 col-md-6">
+        				<div class="feature_item">
+        					<i class="flaticon-city"></i>
+        					<h4>{{ pass.description }}</h4>
+        					<p>Start Date: {{ pass.start }}</p>
+        					<p>End Date: {{ pass.end }}</p>
+        					<p>{{ pass.remarks }}</p>
+        				</div>
+        			</div>
+                {% endfor %}
+                    </div>
+                {% else %}
+                    <p>{{ employee }} has no pass available</p>
+                {% endif %}
+        	</div>
+        </section>
+        <!--================End Feature Area =================-->
+    </div>
+
 
 {% endblock %}

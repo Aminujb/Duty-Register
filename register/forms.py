@@ -1,8 +1,19 @@
+import sys
 from datetime import datetime
-
+from bootstrap_datepicker_plus import DatePickerInput
 import xlrd
-from django.forms import Form, forms
-from register.models import Employee, Rank, Tcomm, State, Unit, Speciality, UnitType, Country
+from django.forms import Form, forms, ModelForm
+from register.models import Employee, Rank, Tcomm, State, Unit, Speciality, UnitType, Country, Pass
+
+
+class PassForm(ModelForm):
+    class Meta:
+        model = Pass
+        fields = '__all__'
+        widgets = {
+            'start': DatePickerInput(),
+            'end': DatePickerInput(),
+        }
 
 
 def can_create(data):
@@ -110,7 +121,7 @@ class UploadRecords(Form):
         try:
             data = extract_data(rows, wb.datemode)
         except Exception:
-            raise Exception('Upload Error')
+            raise forms.ValidationError('o fail ma ni')
         return data
 
     def save(self):
@@ -133,5 +144,88 @@ class UploadRecords(Form):
                     "remarks": d['remarks']
                 }
             )
+
+        return
+
+
+def extract_pass_data(rows, datemode):
+    import_cols = [
+        "P/NUMBER", "DESCRIPTION", "START DATE", "END DATE", "REMARKS"
+    ]
+
+    headers = [col.upper() for col in rows[0]]
+
+    # check that the headings are good.
+    unknown = set(headers).difference(import_cols)
+    if unknown:
+        raise Exception('unknown headers')
+
+    # get the indices for each header
+    p_num_idx, description_idx, start_date_idx, end_date_idx, remarks_index = [
+        headers.index(name) for name in import_cols
+    ]
+
+
+    result = []
+
+    for row_data in rows[1:]:
+
+        try:
+            start_date = datetime(*xlrd.xldate_as_tuple(row_data[start_date_idx], datemode))
+        except Exception:
+            start_date = None
+
+        try:
+            end_date = datetime(*xlrd.xldate_as_tuple(row_data[end_date_idx], datemode))
+        except Exception:
+            end_date = None
+
+        if start_date > end_date:
+            raise Exception('Start Date and End Date for %s is invalid', row_data[p_num_idx].strip())
+        result.append(
+            {
+                'p_number': row_data[p_num_idx].strip(),
+                'description': row_data[description_idx].strip(),
+                'start_date': start_date,
+                'end_date': end_date,
+                'remarks': row_data[remarks_index].strip(),
+            })
+
+    return result
+
+
+class UploadPassRecords(Form):
+    pass_data = forms.FileField()
+
+    def clean_pass_data(self):
+        wb = xlrd.open_workbook(file_contents=self.cleaned_data['pass_data'].read())
+        ws = wb.sheet_by_index(0)
+        if ws.nrows == 0:
+            raise Exception('Unable to process empty sheet')
+        rows = []
+        for row_idx in range(ws.nrows):
+            row = []
+            for col_idx in range(ws.ncols):
+                cell = ws.cell(row_idx, col_idx)
+                cell_value = cell.value
+                if cell.ctype == 2:  # float. convert to str
+                    cell_value = str(int(cell.value))
+                row.append(cell_value)
+            rows.append(row)
+        try:
+            data = extract_pass_data(rows, wb.datemode)
+        except Exception:
+            raise forms.ValidationError('o fail ma ni')
+        return data
+
+    def save(self):
+        data = self.cleaned_data['pass_data']
+        for d in data:
+            emp = Employee.objects.get(p_number=d['p_number'])
+            Pass.objects.create(employee=emp,
+                                description=d['description'],
+                                start=d['start_date'],
+                                end=d['end_date'],
+                                remarks=d['remarks'])
 
         return

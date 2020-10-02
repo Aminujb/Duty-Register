@@ -15,12 +15,8 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-
-
 
 
 # Application definition
@@ -33,6 +29,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'bootstrap_datepicker_plus',
+    'bootstrap4',
+    'pwa',
 ]
 
 MIDDLEWARE = [
@@ -66,7 +66,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'duty_register.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -76,8 +75,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, '../db.sqlite3'),
     }
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -97,13 +94,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Lagos'
 
 USE_I18N = True
 
@@ -121,10 +117,54 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, '../static')
 ]
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"), '/var/www/static/',
-# ]
 STATIC_ROOT = os.path.join(BASE_DIR, '../assets')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
+
+PWA_APP_NAME = 'My App'
+PWA_APP_DESCRIPTION = "My app description"
+PWA_APP_THEME_COLOR = '#0A0302'
+PWA_APP_BACKGROUND_COLOR = '#ffffff'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_SCOPE = '/'
+PWA_APP_ORIENTATION = 'any'
+PWA_APP_START_URL = '/'
+PWA_APP_STATUS_BAR_COLOR = 'default'
+PWA_APP_ICONS = [
+    {
+        'src': os.path.join(BASE_DIR, '../assets/img\logo.png'),
+        'sizes': '160x160'
+    }
+]
+PWA_APP_ICONS_APPLE = [
+    {
+        'src': os.path.join(BASE_DIR, '../assets/img\personal.jpg'),
+        'sizes': '160x160'
+    }
+]
+PWA_APP_SPLASH_SCREEN = [
+    {
+        'src': os.path.join(BASE_DIR, '../assets/img\personal-2.jpg'),
+        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+    }
+]
+PWA_APP_DIR = 'ltr'
+PWA_APP_LANG = 'en-US'
+PWA_APP_DEBUG_MODE = False
+
+LOGIN_EXEMPT_URLS = (
+    # r'^accounts/login/',
+    # r'^accounts/logout/',
+    # r'^accounts/password-reset/',
+    # r'^accounts/reset/',
+    r'^manifest.json', #PWA
+    r'^serviceworker.js',#PWA
+    r'^offline/', #PWA
+)

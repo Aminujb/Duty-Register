@@ -1,6 +1,6 @@
 {% extends "register/base.html" %}
 {% load static %}
-{% block title %} Upload Employees Record {% endblock %}
+{% block title %} Upload Pass Records {% endblock %}
 {% block content %}
 
     <!--================Home Banner Area =================-->
@@ -13,7 +13,7 @@
                             height: 100%; width: 100%">
                          </div>
                         <div class="banner_content text-center">
-							<h2>Upload Records</h2>
+							<h2>Upload Pass Records</h2>
 						</div>
 					</div>
 				</div>
@@ -21,19 +21,20 @@
         </section>
     <div class="container">
 
-        {% include "register/message.html" %}
+    {% include "register/message.html" %}
+
         <!--================End Home Banner Area =================-->
             <div class="section-top-border">
                  <form method="post" action="" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-group mb-30 ml-5 align-content-center mr-5" style="margin-top: 100px">
-                        <a href="{% static 'download/employees.xlsx' %}" class="genric-btn btn-success circle mb-20">Download Template</a>
+                        <a href="{% static 'download/pass.xlsx' %}" class="genric-btn btn-success circle mb-20">Download Template</a>
                         <br>
                         <p class="sample-text mb-5">You Can Only Upload (.xlsx) Files. <br>
                             <strong>Please download template excel file to prevent upload errors.</strong></p>
                         <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                             <span class="input-group-addon fileupload btn btn-success btn-anim btn-file"><i class="fa fa-upload"></i> <span class="fileinput-new btn-text">Select file</span>
-                            <input type="file" name="employees_data" id="id_employees_data">
+                            <input type="file" name="pass_data" id="id_pass_data">
                             </span>
                         </div>
                         <div class="mt-3">

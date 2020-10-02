@@ -174,7 +174,6 @@ class Employee(models.Model):
     phone = models.CharField(max_length=20, blank=True, null=True)
     email = models.EmailField(max_length=254, blank=True, null=True)
     address = models.TextField(blank=True, null=True)
-    last_pass = models.DateTimeField('Last Pass', blank=True, null=True)
     date_tos = models.DateField(verbose_name='Date TOS', blank=True, null=True)
     seniority = models.DateField(blank=True, null=True)
     t_comm = models.ForeignKey(Tcomm, on_delete=models.SET_NULL, blank=True, null=True)
@@ -197,3 +196,18 @@ class Employee(models.Model):
         if self.initials:
             names.append(self.initials)
         return u' '.join(names)
+
+
+class Pass(models.Model):
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE, blank=False)
+    description = models.CharField(max_length=250, blank=False)
+    start = models.DateField()
+    end = models.DateField()
+    remarks = models.CharField(max_length=250, blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Pass History'
+        verbose_name_plural = 'Pass Histories'
+
+    def __str__(self):
+        return self.employee.full_name

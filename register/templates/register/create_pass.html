@@ -1,7 +1,11 @@
 {% extends "register/base.html" %}
-{% load static %}
-{% block title %} Upload Employees Record {% endblock %}
+{% load static crispy_forms_tags bootstrap4 %}
+
+{% block title %} Create Pass {% endblock %}
+
 {% block content %}
+    {% bootstrap_javascript jquery='full' %}  {# Embed Bootstrap JS+jQuery #}
+    {{ form.media }}
 
     <!--================Home Banner Area =================-->
         <section class="banner_area">
@@ -13,31 +17,27 @@
                             height: 100%; width: 100%">
                          </div>
                         <div class="banner_content text-center">
-							<h2>Upload Records</h2>
+							<h2>Create Pass</h2>
 						</div>
 					</div>
 				</div>
             </div>
         </section>
     <div class="container">
-
-        {% include "register/message.html" %}
         <!--================End Home Banner Area =================-->
             <div class="section-top-border">
                  <form method="post" action="" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <div class="form-group mb-30 ml-5 align-content-center mr-5" style="margin-top: 100px">
-                        <a href="{% static 'download/employees.xlsx' %}" class="genric-btn btn-success circle mb-20">Download Template</a>
-                        <br>
-                        <p class="sample-text mb-5">You Can Only Upload (.xlsx) Files. <br>
-                            <strong>Please download template excel file to prevent upload errors.</strong></p>
-                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                            <span class="input-group-addon fileupload btn btn-success btn-anim btn-file"><i class="fa fa-upload"></i> <span class="fileinput-new btn-text">Select file</span>
-                            <input type="file" name="employees_data" id="id_employees_data">
-                            </span>
+                    <div class="form-group mb-15 ml-5 align-content-center mr-5" style="margin-top: 100px">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group mr-15 " style="padding-bottom:20px;" >
+                                    <div style="display: block">{{form | crispy}}</div>
+                                </div>
+                            </div>
                         </div>
                         <div class="mt-3">
-                            <button type="submit" class="btn btn-success">Upload</button>
+                            <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                     </div>
                 </form>
