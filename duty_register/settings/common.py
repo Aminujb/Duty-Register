@@ -159,12 +159,18 @@ PWA_APP_DIR = 'ltr'
 PWA_APP_LANG = 'en-US'
 PWA_APP_DEBUG_MODE = False
 
+LOGOUT_REDIRECT_URL = '/accounts/login'
+LOGIN_REDIRECT_URL = '/'
+
 LOGIN_EXEMPT_URLS = (
-    # r'^accounts/login/',
-    # r'^accounts/logout/',
-    # r'^accounts/password-reset/',
-    # r'^accounts/reset/',
+    r'^accounts/login/',
+    r'^accounts/logout/',
+    r'^accounts/password-reset/',
+    r'^accounts/reset/',
     r'^manifest.json', #PWA
     r'^serviceworker.js',#PWA
     r'^offline/', #PWA
 )
+
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, '../sent_emails')

@@ -40,23 +40,35 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav ml-auto">
-								<li class="nav-item submenu dropdown">
-									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Employee</a>
-									<ul class="dropdown-menu">
-										<li class="nav-item"><a class="nav-link" href="{% url 'register:employee_list' %}">Employees' List</a></li>
-										<li class="nav-item"><a class="nav-link" href="{% url 'register:upload_records' %}">Upload Records</a></li>
-									</ul>
-								</li>
+                                {% if user.is_authenticated %}
+                                    <li class="nav-item submenu dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Employee</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="nav-item"><a class="nav-link" href="{% url 'register:employee_list' %}">Employees' List</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="{% url 'register:upload_records' %}">Upload Records</a></li>
+                                        </ul>
+                                    </li>
+                                {% endif %}
                                 <li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
-                                <li class="nav-item submenu dropdown">
-									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pass</a>
-									<ul class="dropdown-menu">
-										<li class="nav-item"><a class="nav-link" href="{% url 'register:pass_history' %}">Pass History</a></li>
-										<li class="nav-item"><a class="nav-link" href="{% url 'register:create_pass' %}">Create Pass</a></li>
-										<li class="nav-item"><a class="nav-link" href="{% url 'register:upload_pass_records' %}">Upload Pass</a></li>
-									</ul>
-								</li>
+                                {% if user.is_authenticated %}
+                                    <li class="nav-item submenu dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pass</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="nav-item"><a class="nav-link" href="{% url 'register:pass_history' %}">Pass History</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="{% url 'register:create_pass' %}">Create Pass</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="{% url 'register:upload_pass_records' %}">Upload Pass</a></li>
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                                {% if user.is_authenticated %}
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                                {% else %}
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                                {% endif %}
+{#                                <li class="nav-item"><a class="nav-link">#}
+{#                                    {% if user.is_authenticated %}Hello, {{ user.username }}{% endif %}</a></li>#}
 							</ul>
+                            <h4 class="ml-5" style="color: white">{% if user.is_authenticated %}Hello, {{ user.username }}{% endif %}</h4>
 						</div>
 					</div>
             	</nav>

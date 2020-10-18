@@ -1,0 +1,40 @@
+{% extends "register/base.html" %}
+{% load crispy_forms_tags static %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+    <section class="banner_area">
+        <div class="box_1620">
+            <div class="banner_inner d-flex align-items-center">
+                <div class="container">
+                    <div class=" banner_content d-flex">
+                        <img src="{% static 'img/nafrc-logo.png' %}" alt="" style="filter: blur(1px);
+                        height: 100%; width: 100%">
+                     </div>
+                    <div class="banner_content text-center">
+                        <h2>Login</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="section-top-border">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="form-group">
+                    <div class="checkbox checkbox-primary pr-10 pull-left">
+                        <a class="capitalize-font txt-orange block mb-10 pull-right font-12" href="{% url 'password_reset' %}">forgot password ?</a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="primary-btn submit_btn">Sign in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
