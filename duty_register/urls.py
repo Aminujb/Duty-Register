@@ -53,3 +53,6 @@ urlpatterns = [
     # path('accounts/reset/done/', login_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 
 ]
+
+handler404 = 'register.views.handler404'
+handler500 = 'register.views.handler500'

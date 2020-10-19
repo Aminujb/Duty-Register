@@ -4,6 +4,6 @@ from duty_register.settings.common import *
 SECRET_KEY = '1x#^9-)%*fp)k-7go4-&#(-e51rlr-o_7n3(&(1nn3qhg9z4gc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']

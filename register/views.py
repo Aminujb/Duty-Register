@@ -90,3 +90,17 @@ def upload_pass_records(request, next_item='register:pass_history'):
     else:
         form = UploadPassRecords()
     return render(request, 'register/upload_pass_records.html', {"form": form, "next": reverse(next_item), })
+
+
+def handler404(request, exception):
+    context = {}
+    response = render(request, "register/404.html", context=context)
+    response.status_code = 404
+    return response
+
+
+def handler500(request):
+    context = {}
+    response = render(request, "register/500.html", context=context)
+    response.status_code = 500
+    return response
