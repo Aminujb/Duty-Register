@@ -1,5 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
 assets/
 sent_emails/
-.idea/
-__pycache__/
+.idea
+__pycache__
