@@ -2,4 +2,4 @@
 assets/
 sent_emails/
 .idea
-__pycache__
+*.pyc
