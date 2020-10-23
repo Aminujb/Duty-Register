@@ -1,19 +1,29 @@
-name: Lighthouse CI
-on: push
+name: Node CI
+
+on: [push]
+
 jobs:
-  lighthouse:
+  build:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v3
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          urls: |
-            https://nafrc.herokuapp.com/
-            https://nafrc.herokuapp.com/employees/upload-records/
-            https://nafrc.herokuapp.com/employees/pass-history/
-            https://nafrc.herokuapp.com/employees/create-pass/
-            https://nafrc.herokuapp.com/employees/upload-pass-records/
-          budgetPath: ./budget.json # test performance budgets
-          uploadArtifacts: true # save results as an action artifacts
-          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+          node-version: ${{ matrix.node-version }}
+      - name: npm install, run script
+        run: |
+          npm ci
+          npm install puppeteer
+          npm install lighthouse
+          node ./.github/workflow/puppeteer_lighthouse_script.js
+        env:
+          CI: true
+          TEST_USERNAME : "admin"
+          TEST_PASSWORD : "admin"
+          TEST_SERVER_URL : "https://nafrc.herokuapp.com"
