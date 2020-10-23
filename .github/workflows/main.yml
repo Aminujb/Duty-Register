@@ -23,7 +23,8 @@ jobs:
           npm install lighthouse
           npm install dotenv
           node puppeteer_lighthouse_script.js
-      - name: Download a single artifact
-        uses: actions/download-artifact@v2
+      - name: Upload WebApp1 Build Artifact
+        uses: actions/upload-artifact@v2
         with:
-          name: my-artifact
+          name: WebApp1
+          path: /home/runner/work/Duty-Register/Duty-Register/Audit Reports/

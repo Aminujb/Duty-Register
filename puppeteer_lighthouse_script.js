@@ -166,7 +166,7 @@ async function main() {
             throw err;
         }
       });
-      console.log(`${url} -> audit successful`)
+      console.log(`${url} -> audit successful`, fs.p)
 
     }else{
       console.log(`${url} -> audit failed`)
