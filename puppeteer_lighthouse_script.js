@@ -162,13 +162,13 @@ async function main() {
       let data = JSON.stringify(result.lhr, null, 2);
       let filename = `audit_report_for${url.replace(/\//g, '_')}.json`
 
-      fs.writeFile('Audit_Reports\\'+filename, data, (err) => {
+      fs.writeFile(filename, data, (err) => {
         if (err) {
             throw err;
         }
       });
       console.log(`${url} -> audit successful`);
-       const path = `/home/runner/work/Duty-Register/Duty-Register/Audit_Reports/${filename}`
+       const path = `/home/runner/work/Duty-Register/Duty-Register/${filename}`
       fs.access(path, fs.F_OK, (err) => {
         if (err) {
           console.log(__dirname)
