@@ -23,7 +23,7 @@ jobs:
           npm install lighthouse
           npm install dotenv
           node puppeteer_lighthouse_script.js
-      - name: Upload WebApp1 Build Artifact
+      - name: Upload Lighthouse files
         uses: actions/upload-artifact@v2
         with:
           name: WebApp1

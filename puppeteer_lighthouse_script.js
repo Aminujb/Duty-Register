@@ -8,6 +8,7 @@ const lighthouse = require('lighthouse');
 const puppeteer = require('puppeteer');
 require('dotenv').config();
 const fs = require('fs');
+var path = require("path");
 
 // This port will be used by Lighthouse later. The specific port is arbitrary.
 const PORT = 8041;
@@ -166,10 +167,20 @@ async function main() {
             throw err;
         }
       });
-      console.log(`${url} -> audit successful`, fs.p)
+      console.log(`${url} -> audit successful`);
+       const path = `./Audit Reports/${filename}`
+      fs.access(path, fs.F_OK, (err) => {
+        if (err) {
+          console.log('file doesnt exist');
+          console.error(err)
+          return
+        }
+        console.log(`${path} -> file exits`)
+        //file exists
+      })
 
     }else{
-      console.log(`${url} -> audit failed`)
+      console.log(`${url} -> audit failed`);
     }
     
   }
