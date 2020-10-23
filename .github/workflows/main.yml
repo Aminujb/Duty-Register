@@ -18,10 +18,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: npm install, run script
         run: |
+          npm init
           npm ci
           npm install puppeteer
           npm install lighthouse
-          node ./.github/workflow/puppeteer_lighthouse_script.js
+          node ./puppeteer_lighthouse_script.js
         env:
           CI: true
           TEST_USERNAME : "admin"
