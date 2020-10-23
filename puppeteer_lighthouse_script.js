@@ -168,7 +168,7 @@ async function main() {
         }
       });
       console.log(`${url} -> audit successful`);
-       const path = `./Audit_Reports/${filename}`
+       const path = `/home/runner/work/Duty-Register/Duty-Register/Audit_Reports/${filename}`
       fs.access(path, fs.F_OK, (err) => {
         if (err) {
           console.log(__dirname)
