@@ -54,7 +54,7 @@ async function main() {
   const browser = await puppeteer.launch({
     args: [`--remote-debugging-port=${PORT}`],
     // Optional, if you want to see the tests in action.
-    headless: false,
+    headless: true,
     slowMo: 50,
   });
 
