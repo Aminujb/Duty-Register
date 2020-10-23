@@ -19,6 +19,8 @@ jobs:
       - name: npm install, run script
         run: |
           npm install -g npm
+          npm install puppeteer@3.0.4
+          npm install lighthouse
           node puppeteer_lighthouse_script.js
       - name: Download a single artifact
         uses: actions/download-artifact@v2
