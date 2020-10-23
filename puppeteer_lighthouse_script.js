@@ -157,7 +157,7 @@ async function main() {
        console.log("Lighthouse error at " + link);
     });
 
-    // Output the result to file
+    // Output the result to file created
     if (result) {
       let data = JSON.stringify(result.lhr, null, 2);
       let filename = `audit_report_for${url.replace(/\//g, '_')}.json`
