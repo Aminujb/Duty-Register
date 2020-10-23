@@ -6,7 +6,7 @@
 
 const lighthouse = require('lighthouse');
 const puppeteer = require('puppeteer');
-// require('dotenv').config();
+require('dotenv').config();
 const fs = require('fs');
 
 // This port will be used by Lighthouse later. The specific port is arbitrary.

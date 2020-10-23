@@ -21,13 +21,9 @@ jobs:
           npm install -g npm
           npm install puppeteer@3.0.4
           npm install lighthouse
+          npm install dotenv
           node puppeteer_lighthouse_script.js
       - name: Download a single artifact
         uses: actions/download-artifact@v2
         with:
           name: my-artifact
-        env:
-          CI: true
-          TEST_USERNAME : "admin"
-          TEST_PASSWORD : "admin"
-          TEST_SERVER_URL : "https://nafrc.herokuapp.com"
