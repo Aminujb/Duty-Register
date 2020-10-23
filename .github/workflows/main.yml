@@ -26,5 +26,5 @@ jobs:
       - name: Upload Lighthouse files
         uses: actions/upload-artifact@v2
         with:
-          name: WebApp1
-          path: /home/runner/work/Duty-Register/Duty-Register/Audit_Reports/
+          name: LightHouse Results
+          path: /home/runner/work/Duty-Register/Duty-Register/
