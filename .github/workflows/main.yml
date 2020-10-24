@@ -23,8 +23,3 @@ jobs:
           npm install lighthouse
           npm install dotenv
           node puppeteer_lighthouse_script.js
-      - name: Upload Lighthouse files
-        uses: actions/upload-artifact@v2
-        with:
-          name: LightHouse Results
-          path: /home/runner/work/Duty-Register/Duty-Register/
