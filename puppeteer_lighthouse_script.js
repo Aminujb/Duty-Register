@@ -168,7 +168,7 @@ async function main() {
         console.log('Directory created');
     }
 
-      fs.writeFile(directory/filename, data, (err) => {
+      fs.writeFile(`${directory}/${filename}`, data, (err) => {
         if (err) {
             throw err;
         }
