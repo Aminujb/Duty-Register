@@ -143,7 +143,7 @@ async function main() {
   // ]
 
   const urls = [
-    '/','/employees/upload-records/'
+    '/','/view-announcements'
   ]
 
   // generate report for authenticated links
