@@ -152,15 +152,20 @@ async function main() {
   for (const url of urls){
     
     // Direct Lighthouse to use the same port.
-    let link = SERVER_URL+url+'/';
+    let link = SERVER_URL+url;
     let result = await lighthouse(link, {port: PORT, disableStorageReset: true}).catch(function () {
        console.log("Lighthouse error at " + link);
     });
 
-    // Output the result to file created
+    // Output the result to file
+    let filename = ''
     if (result) {
       let data = JSON.stringify(result.lhr, null, 2);
-      let filename = `audit_report_for${url.replace(/\//g, '_')}.json`
+      if (url === '/') {
+        filename = 'audit_report_for_index_page.json'
+      } else{
+        filename = `audit_report_for${url.replace(/\//g, '_')}.json`
+      }
 
       const directory = 'Audit_Reports'
       if (!fs.existsSync(directory)) {
